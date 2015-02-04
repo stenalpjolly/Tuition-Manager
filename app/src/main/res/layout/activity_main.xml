@@ -1,0 +1,251 @@
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/mainScroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:orientation="horizontal" >
+
+                    <Button
+                        android:id="@+id/btnNewTuition"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="2dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button"
+                        android:drawablePadding="10dp"
+                        android:drawableTop="@drawable/new_tuition"
+                        android:gravity="center_horizontal"
+                        android:paddingTop="30dp"
+                        android:text="@string/new_tuition"
+                        android:textColor="#0e2727" >
+                    </Button>
+
+                    <Button
+                        android:id="@+id/btnNewEvent"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button"
+                        android:drawablePadding="10dp"
+                        android:drawableTop="@drawable/new_event"
+                        android:gravity="center_horizontal"
+                        android:paddingTop="30dp"
+                        android:text="New Event"
+                        android:textColor="#0e2727" >
+                    </Button>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:orientation="horizontal" >
+
+                    <Button
+                        android:id="@+id/btnDailyUpdate"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="2dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button"
+                        android:drawablePadding="10dp"
+                        android:drawableTop="@drawable/daily_update"
+                        android:gravity="center_horizontal"
+                        android:paddingTop="30dp"
+                        android:text="Daily Update"
+                        android:textColor="#0e2727" >
+                    </Button>
+
+                    <Button
+                        android:id="@+id/btnList"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button"
+                        android:drawablePadding="10dp"
+                        android:drawableTop="@drawable/student_list"
+                        android:gravity="center_horizontal"
+                        android:paddingTop="30dp"
+                        android:text="Tuition List"
+                        android:textColor="#0e2727" >
+                    </Button>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:orientation="horizontal" >
+
+                    <Button
+                        android:id="@+id/btnCalender"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="2dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button"
+                        android:drawablePadding="10dp"
+                        android:drawableTop="@drawable/calendar"
+                        android:gravity="center_horizontal"
+                        android:paddingTop="30dp"
+                        android:text="Calendar"
+                        android:textColor="#0e2727" >
+                    </Button>
+
+                    <Button
+                        android:id="@+id/btnReport"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button"
+                        android:drawablePadding="10dp"
+                        android:drawableTop="@drawable/report"
+                        android:gravity="center_horizontal"
+                        android:paddingTop="30dp"
+                        android:text="Report"
+                        android:textColor="#0e2727" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:orientation="horizontal" >
+
+                    <Button
+                        android:id="@+id/btnStudentList"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="2dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button"
+                        android:drawablePadding="10dp"
+                        android:drawableTop="@drawable/event_list"
+                        android:gravity="center_horizontal"
+                        android:paddingTop="30dp"
+                        android:text="Event List"
+                        android:textColor="#0e2727" />
+
+                    <Button
+                        android:id="@+id/btnBackup"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button"
+                        android:drawablePadding="10dp"
+                        android:drawableTop="@drawable/backup"
+                        android:gravity="center_horizontal"
+                        android:paddingTop="30dp"
+                        android:text="Backup"
+                        android:textColor="#0e2727" >
+                    </Button>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="4dp" >
+
+                    <Button
+                        android:id="@+id/btnExport"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="2dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button"
+                        android:drawablePadding="10dp"
+                        android:drawableTop="@drawable/export"
+                        android:gravity="center_horizontal"
+                        android:paddingTop="30dp"
+                        android:text="Export"
+                        android:textColor="#0e2727" >
+                    </Button>
+
+                    <Button
+                        android:id="@+id/btnExit"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button"
+                        android:drawablePadding="10dp"
+                        android:drawableTop="@drawable/exit"
+                        android:gravity="center_horizontal"
+                        android:paddingTop="30dp"
+                        android:text="Exit"
+                        android:textColor="#0e2727" >
+                    </Button>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+

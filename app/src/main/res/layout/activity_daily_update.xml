@@ -1,0 +1,181 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/txtDaily_FullName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:focusableInTouchMode="false"
+            android:hint="Full Name"
+            android:inputType="textPersonName"
+            android:paddingLeft="10dp" />
+
+        <EditText
+            android:id="@+id/txtTuitionName"
+            style="?android:attr/spinnerStyle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:focusable="false"
+            android:hint="Date"
+            android:inputType="date"
+            android:paddingLeft="10dp" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="10dp"
+            android:text="TIME PERIOD"
+            android:textColor="#205858" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:background="#205858" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <EditText
+                android:id="@+id/txtTimeFrom"
+                style="?android:attr/spinnerStyle"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:focusable="false"
+                android:hint="From"
+                android:inputType="time"
+                android:paddingLeft="10dp" />
+
+            <EditText
+                android:id="@+id/txtTimeTo"
+                style="?android:attr/spinnerStyle"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:focusable="false"
+                android:hint="To"
+                android:inputType="time"
+                android:paddingLeft="10dp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="10dp"
+            android:text="COMMISSION"
+            android:textColor="#205858" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:background="#205858" />
+
+        <CheckBox
+            android:id="@+id/txtPayCommission"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pay Commission" />
+
+        <EditText
+            android:id="@+id/txtCommissionSessionNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="No.of Commission Session"
+            android:inputType="numberDecimal"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="10dp"
+            android:text="PAYMENT"
+            android:textColor="#205858" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:background="#205858" />
+
+        <CheckBox
+            android:id="@+id/txtPaymentReceived"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Payment Received" />
+
+        <EditText
+            android:id="@+id/txtPaymentSessionNo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="No.of Paid Session"
+            android:inputType="numberDecimal"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="10dp"
+            android:text="NO.OF SESSION TO MARK"
+            android:textColor="#205858" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:background="#205858" />
+
+        <EditText
+            android:id="@+id/txtSessionNo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="No.of Session"
+            android:inputType="numberDecimal"
+            android:text="1" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="10dp"
+            android:text="AMOUNT"
+            android:textColor="#205858" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:background="#205858" />
+
+        <TextView
+            android:id="@+id/lblAmount"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center_vertical"
+            android:gravity="right|center_vertical"
+            android:padding="5dp"
+            android:text="0.00"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+    </LinearLayout>
+
+</ScrollView>

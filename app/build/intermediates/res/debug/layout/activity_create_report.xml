@@ -1,0 +1,300 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/txtReportTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Report Title" >
+
+            <requestFocus />
+        </EditText>
+
+        <TextView
+            android:id="@+id/lblBasedOn"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="10dp"
+            android:text="BASED ON"
+            android:textColor="#205858" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:background="#205858" />
+
+        <Spinner
+            android:id="@+id/txtBasedOn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:id="@+id/layoutBasedOnTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/lblBasedOnTime"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="10dp"
+                android:text="BASED ON TIME"
+                android:textColor="#205858" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2dp"
+                android:background="#205858" />
+
+            <Spinner
+                android:id="@+id/txtPeriodType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/txtYearMonth"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:hint="Year/Month/Day"
+                android:padding="3dp"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <LinearLayout
+                android:id="@+id/layoutTime_BasedOnTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingTop="10dp"
+                    android:text="TIME PERIOD"
+                    android:textColor="#205858" />
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="2dp"
+                    android:background="#205858" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <EditText
+                        android:id="@+id/txtDateFrom_BasedOnTime"
+                        style="?android:attr/spinnerStyle"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:focusable="false"
+                        android:hint="From"
+                        android:inputType="time"
+                        android:paddingLeft="10dp" />
+
+                    <EditText
+                        android:id="@+id/txtDateTo_BasedOnTime"
+                        style="?android:attr/spinnerStyle"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:focusable="false"
+                        android:hint="To"
+                        android:inputType="time"
+                        android:paddingLeft="10dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" 
+            android:id="@+id/layoutBasedOnTuition">
+
+            <TextView
+                android:id="@+id/lblBasedOnTuition"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="10dp"
+                android:text="BASED ON TUITION"
+                android:textColor="#205858" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2dp"
+                android:background="#205858" />
+
+            <EditText
+                android:id="@+id/txtTuitionName_BasedOnTuition"
+                style="?android:attr/spinnerStyle"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:focusable="false"
+                android:hint="Select Tuition"
+                android:paddingLeft="10dp" />
+
+            <CheckBox
+                android:id="@+id/txtCustomTimePeriod_BasedOnTuition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="Custom Time Period" />
+
+            <LinearLayout
+                android:id="@+id/layoutTime_BasedOnTuition"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" >
+
+                <EditText
+                    android:id="@+id/txtDateFrom_BasedOnTuition"
+                    style="?android:attr/spinnerStyle"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:focusable="false"
+                    android:hint="From"
+                    android:inputType="time"
+                    android:paddingLeft="10dp" />
+
+                <EditText
+                    android:id="@+id/txtDateTo_BasedOnTuition"
+                    style="?android:attr/spinnerStyle"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:focusable="false"
+                    android:hint="To"
+                    android:inputType="time"
+                    android:paddingLeft="10dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" 
+            android:id="@+id/layoutBasedOnFee">
+
+            <TextView
+                android:id="@+id/lblBasedOnFeeDue"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="10dp"
+                android:text="BASED ON FEE DUE"
+                android:textColor="#205858" />
+
+            <TextView
+                android:id="@+id/lblBalanceSheet"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="10dp"
+                android:text="BALANCE SHEET"
+                android:textColor="#205858" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2dp"
+                android:background="#205858" />
+
+            <CheckBox
+                android:id="@+id/txtSpecifyTuition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Specify Tuition" />
+
+            <EditText
+                android:id="@+id/txtTuitionName"
+                style="?android:attr/spinnerStyle"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:focusable="false"
+                android:hint="Select Tuition"
+                android:paddingLeft="10dp"
+                android:visibility="gone" />
+
+            <CheckBox
+                android:id="@+id/txtSetTarget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Set Target Amount" />
+
+            <EditText
+                android:id="@+id/txtTargetAmount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Target Amount"
+                android:inputType="numberDecimal"
+                android:visibility="gone" />
+
+            <CheckBox
+                android:id="@+id/txtCustomTimePeriod"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Custom Time Period" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/layoutTime_BasedOnFee"
+                android:visibility="gone" >
+
+                <EditText
+                    android:id="@+id/txtDateFrom"
+                    style="?android:attr/spinnerStyle"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:focusable="false"
+                    android:hint="From"
+                    android:inputType="time"
+                    android:paddingLeft="10dp" />
+
+                <EditText
+                    android:id="@+id/txtDateTo"
+                    style="?android:attr/spinnerStyle"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:focusable="false"
+                    android:hint="To"
+                    android:inputType="time"
+                    android:paddingLeft="10dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView><!-- From: file:/D:/Works/Tuition%20Manager/Android%20Studio%20Version/AS%20Version/app/src/main/res/layout/activity_create_report.xml -->

@@ -1,0 +1,5 @@
+D:\Works\Tuition Manager\Android Studio Version\AS Version\app\build\intermediates\classes\debug
+D:\Works\Tuition Manager\Android Studio Version\AS Version\app\build\intermediates\pre-dexed\debug\classes-233a4aef8aec8684aac3e83320c939909b8f78eb.jar
+D:\Works\Tuition Manager\Android Studio Version\AS Version\app\build\intermediates\pre-dexed\debug\sqliteassethelper-2.0.1-9218a0eeaf2fb2445867144eb88ffd7541375f43.jar
+D:\Works\Tuition Manager\Android Studio Version\AS Version\app\build\intermediates\pre-dexed\debug\classes-86b5811afcd7a1b4eed3992a3dab39851657d1d3.jar
+D:\Works\Tuition Manager\Android Studio Version\AS Version\app\build\intermediates\pre-dexed\debug\support-v4-18.0.0-19908820cd53ea1650249d91c6397ed70abbfc0a.jar

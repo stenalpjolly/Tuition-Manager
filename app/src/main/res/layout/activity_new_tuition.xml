@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <EditText
+                android:id="@+id/txtFullName"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:ems="10"
+                android:hint="Full Name"
+                android:inputType="textPersonName" >
+
+                <requestFocus />
+            </EditText>
+
+            <ImageView
+                android:id="@+id/imgStudent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/new_student" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/txtClass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Class" />
+
+        <TextView
+            android:id="@+id/lblAddress"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="10dp"
+            android:text="ADDRESS"
+            android:textColor="#205858" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:background="#205858" />
+
+        <EditText
+            android:id="@+id/txtAddress1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Street"
+            android:inputType="textPostalAddress" />
+
+        <EditText
+            android:id="@+id/txtAddress2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="PO Box" />
+
+        <EditText
+            android:id="@+id/txtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Email"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:id="@+id/txtPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Phone"
+            android:inputType="phone" />
+
+        <TextView
+            android:id="@+id/lblClasseson"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="10dp"
+            android:text="CLASSES ON"
+            android:textColor="#205858" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:background="#205858" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:padding="2dp" >
+
+            <LinearLayout
+                android:id="@+id/day_layer1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center" >
+
+                <Button
+                    android:id="@+id/btnSun"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/circle"
+                    android:layout_marginRight="2dp"
+                    android:text="Sun" />
+
+                <Button
+                    android:id="@+id/btnMon"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="2dp"
+                    android:background="@drawable/circle"
+                    android:text="Mon" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:gravity="center"
+                android:layout_below="@id/day_layer1"
+                android:id="@+id/day_layer2"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/btnTue"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/circle"
+                    android:text="Tue" />
+
+                <Button
+                    android:id="@+id/btnWed"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:background="@drawable/circle"
+                    android:text="Wed" />
+
+                <Button
+                    android:id="@+id/btnThu"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/circle"
+                    android:text="Thu" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:gravity="center"
+                android:layout_below="@id/day_layer2"
+                android:id="@+id/day_layer3"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/btnFri"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@drawable/circle"
+                    android:text="Fri" />
+
+                <Button
+                    android:id="@+id/btnSat"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="2dp"
+                    android:background="@drawable/circle"
+                    android:padding="3dp"
+                    android:text="Sat" />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/lblPayment"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="10dp"
+            android:text="PAYMENT"
+            android:textColor="#205858" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:background="#205858" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <EditText
+                android:id="@+id/txtNo_of_Hrs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="No.of Hours"
+                android:inputType="numberDecimal" />
+
+            <EditText
+                android:id="@+id/txtPay_per_Hour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Pay/Hour"
+                android:inputType="numberDecimal" />
+        </LinearLayout>
+
+        <CheckBox
+            android:id="@+id/txtEnableCommission"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Enable Commission" />
+
+        <TextView
+            android:id="@+id/lblPaymentMethod"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="10dp"
+            android:text="PAYMENT METHOD"
+            android:textColor="#205858" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:background="#205858" />
+
+        <Spinner
+            android:id="@+id/txtPayment_Method"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center" />
+
+                <TextView
+                    android:id="@+id/lblPaymentTuition"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingTop="10dp"
+                    android:text="ACTIVITY"
+                    android:textColor="#205858" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:background="#205858" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/lblStatus"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|left"
+                android:layout_weight="1"
+                android:gravity="center_vertical|left"
+                android:text="STATUS"
+                android:textColor="#205858" />
+
+            <ToggleButton
+                android:id="@+id/btnStatus"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:checked="true"
+                android:hint="Status"
+                android:textOff="NOT ACTIVE"
+                android:textOn="ACTIVE" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

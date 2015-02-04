@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="payment_methods">
+        <item>Per Session</item>
+        <item>Per 2 Session</item>
+        <item>Per 4 Session</item>
+        <item>Per Month</item>
+        <item>End of All Session</item>
+        <item>Prepaid</item>
+        <item>Other</item>
+    </string-array>
+    <string-array name="based_on">
+        <item>Time Period</item>
+        <item>Tuition</item>
+        <item>Fee Due</item>
+        <item>Balance Sheet</item>
+    </string-array>
+    <string-array name="time_periods">
+        <item>Custom</item>
+        <item>Year</item>
+        <item>Month</item>
+        <item>Day</item>
+    </string-array>
+</resources>

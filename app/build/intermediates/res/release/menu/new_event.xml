@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/action_cancel"
+        android:icon="@drawable/close"
+        android:showAsAction="always|withText"
+        android:title="@string/cancel"/>
+    <item
+        android:id="@+id/action_done"
+        android:icon="@drawable/done"
+        android:showAsAction="withText|always"
+        android:title="@string/done"/>
+
+</menu><!-- From: file:/D:/Works/Tuition%20Manager/Android%20Studio%20Version/AS%20Version/app/src/main/res/menu/new_event.xml -->

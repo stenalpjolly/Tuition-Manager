@@ -1,0 +1,463 @@
+<html>
+<head>
+<title>ReportGenerator.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: rgb(0,0,0); font-weight: normal; font-style: normal; }
+.s0 { color: rgb(0,0,128); font-weight: bold; }
+.s1 { }
+.s2 { color: rgb(0,128,0); font-weight: bold; }
+.s3 { color: rgb(128,128,128); font-style: italic; }
+.s4 { color: rgb(0,0,255); }
+.s5 { color: rgb(128,128,128); font-weight: bold; font-style: italic; }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+ReportGenerator.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+
+<span class="s0">package </span><span class="s1">com.spj.tuitionmanager; 
+ 
+</span><span class="s0">import </span><span class="s1">java.util.ArrayList; 
+ 
+</span><span class="s0">import </span><span class="s1">android.os.Bundle; 
+</span><span class="s0">import </span><span class="s1">android.app.Activity; 
+</span><span class="s0">import </span><span class="s1">android.content.ContentValues; 
+</span><span class="s0">import </span><span class="s1">android.content.pm.ActivityInfo; 
+</span><span class="s0">import </span><span class="s1">android.content.res.ColorStateList; 
+</span><span class="s0">import </span><span class="s1">android.graphics.Color; 
+</span><span class="s0">import </span><span class="s1">android.graphics.Typeface; 
+</span><span class="s0">import </span><span class="s1">android.util.Log; 
+</span><span class="s0">import </span><span class="s1">android.view.Gravity; 
+</span><span class="s0">import </span><span class="s1">android.view.LayoutInflater; 
+</span><span class="s0">import </span><span class="s1">android.view.Menu; 
+</span><span class="s0">import </span><span class="s1">android.view.MenuItem; 
+</span><span class="s0">import </span><span class="s1">android.view.View; 
+</span><span class="s0">import </span><span class="s1">android.widget.LinearLayout; 
+</span><span class="s0">import </span><span class="s1">android.widget.LinearLayout.LayoutParams; 
+</span><span class="s0">import </span><span class="s1">android.widget.TableLayout; 
+</span><span class="s0">import </span><span class="s1">android.widget.TableRow; 
+</span><span class="s0">import </span><span class="s1">android.widget.TextView; 
+</span><span class="s0">import </span><span class="s1">android.widget.Toast; 
+</span><span class="s0">import </span><span class="s1">android.support.v4.app.NavUtils; 
+</span><span class="s0">import </span><span class="s1">android.text.TextUtils.TruncateAt; 
+ 
+</span><span class="s0">public class </span><span class="s1">ReportGenerator </span><span class="s0">extends </span><span class="s1">Activity { 
+ 
+    @Override 
+    </span><span class="s0">protected void </span><span class="s1">onCreate(Bundle savedInstanceState) { 
+        </span><span class="s0">super</span><span class="s1">.onCreate(savedInstanceState); 
+ 
+        View contentView = </span><span class="s0">new </span><span class="s1">View(</span><span class="s0">this</span><span class="s1">); 
+        String reportTitle; 
+        String reportType; 
+ 
+        reportTitle = getIntent().getExtras().getString(</span><span class="s2">&quot;reportTitle&quot;</span><span class="s1">); 
+        DatabaseHelper dbHelper = </span><span class="s0">new </span><span class="s1">DatabaseHelper(</span><span class="s0">this</span><span class="s1">); 
+        reportType = dbHelper.getReportType(reportTitle); 
+ 
+        </span><span class="s0">if </span><span class="s1">(reportType.equals(</span><span class="s2">&quot;Time Period&quot;</span><span class="s1">)) 
+            contentView = timePeriodReport(reportTitle); 
+        </span><span class="s0">if </span><span class="s1">(reportType.equals(</span><span class="s2">&quot;Tuition&quot;</span><span class="s1">)) 
+            contentView = tuitionPeriodReport(reportTitle); 
+        </span><span class="s0">if </span><span class="s1">(reportType.equals(</span><span class="s2">&quot;Fee Due&quot;</span><span class="s1">)) 
+            contentView = tuitionPeriodReport(reportTitle); 
+        </span><span class="s0">if </span><span class="s1">(reportType.equals(</span><span class="s2">&quot;Balance Sheet&quot;</span><span class="s1">)) 
+            contentView = balanceSheetPeriodReport(reportTitle); 
+        </span><span class="s3">// setContentView(R.layout.activity_report_generator);</span><span class="s1"> 
+        setContentView(contentView); 
+        </span><span class="s3">// Show the Up button in the action bar.</span><span class="s1"> 
+        setupActionBar(); 
+    }<hr> 
+ 
+    </span><span class="s0">private </span><span class="s1">View timePeriodReport(String reportTitle) { 
+        </span><span class="s3">// TODO Auto-generated method stub</span><span class="s1"> 
+</span><span class="s3">//      this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);</span><span class="s1"> 
+        View reportView = LayoutInflater.from(</span><span class="s0">this</span><span class="s1">).inflate( 
+                R.layout.activity_report_generator, </span><span class="s0">null</span><span class="s1">); 
+ 
+        LinearLayout layoutReportHeader = (LinearLayout) reportView 
+                .findViewById(R.id.layout_header_section); 
+        TableLayout reportTable = (TableLayout) reportView 
+                .findViewById(R.id.table_report); 
+ 
+        LinearLayout.LayoutParams fullWidthParams = </span><span class="s0">new </span><span class="s1">LinearLayout.LayoutParams( 
+                LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT); 
+        </span><span class="s3">// fullWidthParams.setMargins(5, 5, 5, 5);</span><span class="s1"> 
+ 
+        DatabaseHelper dbHelper = </span><span class="s0">new </span><span class="s1">DatabaseHelper(</span><span class="s0">this</span><span class="s1">); 
+ 
+        ContentValues reportDetails = dbHelper.getReportRecord(reportTitle); 
+        String dateFrom = reportDetails 
+                .getAsString(DatabaseHelper.COLUMN_date_from); 
+        String dateTo = reportDetails 
+                .getAsString(DatabaseHelper.COLUMN_date_to); 
+        TextView txtPeriodHeader = </span><span class="s0">new </span><span class="s1">TextView(</span><span class="s0">this</span><span class="s1">); 
+        txtPeriodHeader.setText(</span><span class="s2">&quot;Period: &quot; </span><span class="s1">+ dateFrom + </span><span class="s2">&quot; to &quot; </span><span class="s1">+ dateTo); 
+        txtPeriodHeader.setTextColor(Color.WHITE); 
+        txtPeriodHeader.setTextSize(</span><span class="s4">16</span><span class="s1">); 
+        txtPeriodHeader.setPadding(</span><span class="s4">5</span><span class="s1">, </span><span class="s4">5</span><span class="s1">, </span><span class="s4">5</span><span class="s1">, </span><span class="s4">5</span><span class="s1">); 
+        txtPeriodHeader.setBackgroundColor(Color.rgb(</span><span class="s4">20</span><span class="s1">, </span><span class="s4">58</span><span class="s1">, </span><span class="s4">58</span><span class="s1">)); 
+        txtPeriodHeader.setLayoutParams(fullWidthParams); 
+ 
+        ArrayList&lt;ArrayList&lt;String&gt;&gt; tableReportList = dbHelper 
+                .getReportDetails_TimeType(dateFrom, dateTo); 
+        ArrayList&lt;String&gt; row = </span><span class="s0">new </span><span class="s1">ArrayList&lt;String&gt;(); 
+ 
+        </span><span class="s3">// For Header</span><span class="s1"> 
+        row = (ArrayList&lt;String&gt;) tableReportList.get(</span><span class="s4">0</span><span class="s1">); 
+        TableRow tableHeaderRow = </span><span class="s0">new </span><span class="s1">TableRow(</span><span class="s0">this</span><span class="s1">); 
+        TableRow.LayoutParams headerParams = </span><span class="s0">new </span><span class="s1">TableRow.LayoutParams( 
+                TableRow.LayoutParams.WRAP_CONTENT, 
+                TableRow.LayoutParams.MATCH_PARENT); 
+        </span><span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i = </span><span class="s4">0</span><span class="s1">; i &lt; row.size(); i++) { 
+            TextView lblHeaderCell = </span><span class="s0">new </span><span class="s1">TextView(</span><span class="s0">this</span><span class="s1">); 
+            lblHeaderCell.setText(row.get(i)); 
+            lblHeaderCell.setGravity(Gravity.CENTER); 
+            </span><span class="s3">// lblHeaderCell.setBackgroundColor(Color.rgb(20, 58, 58));</span><span class="s1"> 
+            lblHeaderCell.setTextColor(Color.WHITE); 
+            lblHeaderCell.setTypeface(</span><span class="s0">null</span><span class="s1">, Typeface.BOLD); 
+            lblHeaderCell.setPadding(</span><span class="s4">7</span><span class="s1">, </span><span class="s4">7</span><span class="s1">, </span><span class="s4">7</span><span class="s1">, </span><span class="s4">7</span><span class="s1">); 
+            lblHeaderCell.setEllipsize(TruncateAt.START); 
+            lblHeaderCell.setMaxLines(</span><span class="s4">2</span><span class="s1">); 
+            lblHeaderCell.setBackgroundResource(R.drawable.header); 
+            lblHeaderCell.setLayoutParams(headerParams); 
+            tableHeaderRow.addView(lblHeaderCell); 
+        } 
+        reportTable.addView(tableHeaderRow); 
+ 
+        </span><span class="s3">// For Content</span><span class="s1"> 
+        </span><span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">j = </span><span class="s4">1</span><span class="s1">; j &lt; tableReportList.size() - </span><span class="s4">1</span><span class="s1">; j++) { 
+            row = (ArrayList&lt;String&gt;) tableReportList.get(j); 
+            TableRow tableRow = </span><span class="s0">new </span><span class="s1">TableRow(</span><span class="s0">this</span><span class="s1">); 
+            </span><span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i = </span><span class="s4">0</span><span class="s1">; i &lt; row.size(); i++) { 
+                TextView lblCell = </span><span class="s0">new </span><span class="s1">TextView(</span><span class="s0">this</span><span class="s1">); 
+                lblCell.setText(row.get(i)); 
+                lblCell.setPadding(</span><span class="s4">7</span><span class="s1">, </span><span class="s4">7</span><span class="s1">, </span><span class="s4">7</span><span class="s1">, </span><span class="s4">7</span><span class="s1">); 
+                lblCell.setBackgroundResource(R.drawable.cell); 
+                tableRow.addView(lblCell); 
+            } 
+            reportTable.addView(tableRow); 
+        } 
+ 
+        </span><span class="s3">// For Footer Total</span><span class="s1"> 
+        row = (ArrayList&lt;String&gt;) tableReportList 
+                .get(tableReportList.size() - </span><span class="s4">1</span><span class="s1">); 
+        TableRow tableFooterRow = </span><span class="s0">new </span><span class="s1">TableRow(</span><span class="s0">this</span><span class="s1">); 
+        </span><span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i = </span><span class="s4">0</span><span class="s1">; i &lt; row.size(); i++) { 
+            TextView lblFooterCell = </span><span class="s0">new </span><span class="s1">TextView(</span><span class="s0">this</span><span class="s1">); 
+            lblFooterCell.setText(row.get(i)); 
+            lblFooterCell.setTextColor(Color.WHITE); 
+            lblFooterCell.setTypeface(</span><span class="s0">null</span><span class="s1">, Typeface.BOLD); 
+            lblFooterCell.setPadding(</span><span class="s4">7</span><span class="s1">, </span><span class="s4">7</span><span class="s1">, </span><span class="s4">7</span><span class="s1">, </span><span class="s4">7</span><span class="s1">); 
+            lblFooterCell.setBackgroundResource(R.drawable.header); 
+            tableFooterRow.addView(lblFooterCell); 
+        } 
+        reportTable.addView(tableFooterRow); 
+ 
+        </span><span class="s3">// Toast.makeText(this, String.valueOf(tableReport.length),</span><span class="s1"> 
+        </span><span class="s3">// Toast.LENGTH_SHORT).show();</span><span class="s1"> 
+ 
+        layoutReportHeader.addView(txtPeriodHeader); 
+        </span><span class="s0">return </span><span class="s1">reportView; 
+    }<hr> 
+ 
+    </span><span class="s0">private </span><span class="s1">View balanceSheetPeriodReport(String reportTitle) { 
+        </span><span class="s3">// TODO Auto-generated method stub</span><span class="s1"> 
+</span><span class="s3">//      this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);</span><span class="s1"> 
+        View reportView = LayoutInflater.from(</span><span class="s0">this</span><span class="s1">).inflate( 
+                R.layout.activity_report_generator, </span><span class="s0">null</span><span class="s1">); 
+ 
+        LinearLayout layoutReportHeader = (LinearLayout) reportView 
+                .findViewById(R.id.layout_header_section); 
+        TableLayout reportTable = (TableLayout) reportView 
+                .findViewById(R.id.table_report); 
+ 
+        LinearLayout.LayoutParams fullWidthParams = </span><span class="s0">new </span><span class="s1">LinearLayout.LayoutParams( 
+                LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT); 
+        </span><span class="s3">// fullWidthParams.setMargins(5, 5, 5, 5);</span><span class="s1"> 
+ 
+        TableRow.LayoutParams headerParams = </span><span class="s0">new </span><span class="s1">TableRow.LayoutParams( 
+                TableRow.LayoutParams.WRAP_CONTENT, 
+                TableRow.LayoutParams.MATCH_PARENT); 
+ 
+        DatabaseHelper dbHelper = </span><span class="s0">new </span><span class="s1">DatabaseHelper(</span><span class="s0">this</span><span class="s1">); 
+ 
+        ContentValues reportDetails = dbHelper.getReportRecord(reportTitle); 
+ 
+        String customTargetAsString = reportDetails 
+                .getAsString(DatabaseHelper.COLUMN_set_target_amount_check); 
+        Boolean isCustomTarget = (!customTargetAsString.equals(</span><span class="s2">&quot;0&quot;</span><span class="s1">)); 
+        String customTuitionAsString = reportDetails 
+                .getAsString(DatabaseHelper.COLUMN_specify_tuition_check); 
+        Boolean isCustomTuition = (!customTuitionAsString.equals(</span><span class="s2">&quot;0&quot;</span><span class="s1">)); 
+        String customDateAsString = reportDetails 
+                .getAsString(DatabaseHelper.COLUMN_custom_time_check); 
+        Boolean isCustomDate = (!customDateAsString.equals(</span><span class="s2">&quot;0&quot;</span><span class="s1">)); 
+ 
+        String dateFrom = reportDetails 
+                .getAsString(DatabaseHelper.COLUMN_date_from); 
+        String dateTo = reportDetails 
+                .getAsString(DatabaseHelper.COLUMN_date_to); 
+        String tuitionName = reportDetails 
+                .getAsString(DatabaseHelper.COLUMN_tuition_name); 
+        Double targetAmount = reportDetails 
+                .getAsDouble(DatabaseHelper.COLUMN_target_amount); 
+        </span><span class="s0">if </span><span class="s1">(isCustomDate) { 
+            TextView txtPeriodHeader = </span><span class="s0">new </span><span class="s1">TextView(</span><span class="s0">this</span><span class="s1">); 
+            txtPeriodHeader.setText(</span><span class="s2">&quot;Period: &quot; </span><span class="s1">+ dateFrom + </span><span class="s2">&quot; to &quot; </span><span class="s1">+ dateTo); 
+            txtPeriodHeader.setTextColor(Color.WHITE); 
+            txtPeriodHeader.setTextSize(</span><span class="s4">16</span><span class="s1">); 
+            txtPeriodHeader.setPadding(</span><span class="s4">5</span><span class="s1">, </span><span class="s4">5</span><span class="s1">, </span><span class="s4">5</span><span class="s1">, </span><span class="s4">5</span><span class="s1">); 
+            txtPeriodHeader.setBackgroundColor(Color.rgb(</span><span class="s4">20</span><span class="s1">, </span><span class="s4">58</span><span class="s1">, </span><span class="s4">58</span><span class="s1">)); 
+            txtPeriodHeader.setLayoutParams(fullWidthParams); 
+            layoutReportHeader.addView(txtPeriodHeader); 
+        } 
+        </span><span class="s0">if </span><span class="s1">(isCustomTuition) { 
+            TextView txtPeriodHeader = </span><span class="s0">new </span><span class="s1">TextView(</span><span class="s0">this</span><span class="s1">); 
+            txtPeriodHeader.setText(</span><span class="s2">&quot;Tuition : &quot; </span><span class="s1">+ tuitionName); 
+            txtPeriodHeader.setTextColor(Color.WHITE); 
+            txtPeriodHeader.setTextSize(</span><span class="s4">16</span><span class="s1">); 
+            txtPeriodHeader.setPadding(</span><span class="s4">5</span><span class="s1">, </span><span class="s4">5</span><span class="s1">, </span><span class="s4">5</span><span class="s1">, </span><span class="s4">5</span><span class="s1">); 
+            txtPeriodHeader.setBackgroundColor(Color.rgb(</span><span class="s4">20</span><span class="s1">, </span><span class="s4">58</span><span class="s1">, </span><span class="s4">58</span><span class="s1">)); 
+            txtPeriodHeader.setLayoutParams(fullWidthParams); 
+            layoutReportHeader.addView(txtPeriodHeader); 
+        } 
+        </span><span class="s0">if </span><span class="s1">(isCustomTarget) { 
+            TextView txtPeriodHeader = </span><span class="s0">new </span><span class="s1">TextView(</span><span class="s0">this</span><span class="s1">); 
+            txtPeriodHeader 
+                    .setText(</span><span class="s2">&quot;Target Amount :&quot; </span><span class="s1">+ targetAmount.toString()); 
+            txtPeriodHeader.setTextColor(Color.WHITE); 
+            txtPeriodHeader.setTextSize(</span><span class="s4">16</span><span class="s1">); 
+            txtPeriodHeader.setPadding(</span><span class="s4">5</span><span class="s1">, </span><span class="s4">5</span><span class="s1">, </span><span class="s4">5</span><span class="s1">, </span><span class="s4">5</span><span class="s1">); 
+            txtPeriodHeader.setBackgroundColor(Color.rgb(</span><span class="s4">20</span><span class="s1">, </span><span class="s4">58</span><span class="s1">, </span><span class="s4">58</span><span class="s1">)); 
+            txtPeriodHeader.setLayoutParams(fullWidthParams); 
+            layoutReportHeader.addView(txtPeriodHeader); 
+        } 
+        ArrayList&lt;ReportBalanceSheet&gt; tableReportList = dbHelper 
+                .getReportDetails_BalanceSheetType(isCustomTuition, tuitionName, isCustomTarget, isCustomDate, dateFrom, dateTo); 
+        ReportBalanceSheet singleBalanceSheet = </span><span class="s0">new </span><span class="s1">ReportBalanceSheet(); 
+ 
+        </span><span class="s3">// For Each Year Balance Sheet</span><span class="s1"> 
+        </span><span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">j = </span><span class="s4">0</span><span class="s1">; j &lt; tableReportList.size(); j++) { 
+            singleBalanceSheet = (ReportBalanceSheet) tableReportList.get(j); 
+            TextView lblYearCell = </span><span class="s0">new </span><span class="s1">TextView(</span><span class="s0">this</span><span class="s1">); 
+            lblYearCell.setText(singleBalanceSheet.getYear()); 
+            lblYearCell.setTextColor(Color.WHITE); 
+            lblYearCell.setTypeface(</span><span class="s0">null</span><span class="s1">, Typeface.BOLD); 
+            lblYearCell.setPadding(</span><span class="s4">7</span><span class="s1">, </span><span class="s4">7</span><span class="s1">, </span><span class="s4">7</span><span class="s1">, </span><span class="s4">7</span><span class="s1">); 
+ 
+            TableRow.LayoutParams layoutParams = </span><span class="s0">new </span><span class="s1">TableRow.LayoutParams( 
+                    LayoutParams.MATCH_PARENT, </span><span class="s4">5</span><span class="s1">); 
+            View hr = </span><span class="s0">new </span><span class="s1">View(</span><span class="s0">this</span><span class="s1">); 
+            hr.setLayoutParams(layoutParams); 
+            reportTable.addView(hr); 
+ 
+            lblYearCell.setBackgroundResource(R.drawable.header); 
+            reportTable.addView(lblYearCell); 
+ 
+            ArrayList&lt;String&gt; row = ReportBalanceSheet.getHeader(); 
+            TableRow tableRow = </span><span class="s0">new </span><span class="s1">TableRow(</span><span class="s0">this</span><span class="s1">); 
+            </span><span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i = </span><span class="s4">0</span><span class="s1">; i &lt; row.size(); i++) { 
+                TextView lblHeaderCell = </span><span class="s0">new </span><span class="s1">TextView(</span><span class="s0">this</span><span class="s1">); 
+                lblHeaderCell.setText(row.get(i)); 
+                lblHeaderCell.setGravity(Gravity.CENTER); 
+                lblHeaderCell.setTextColor(Color.WHITE); 
+                lblHeaderCell.setTypeface(</span><span class="s0">null</span><span class="s1">, Typeface.BOLD); 
+                lblHeaderCell.setPadding(</span><span class="s4">7</span><span class="s1">, </span><span class="s4">7</span><span class="s1">, </span><span class="s4">7</span><span class="s1">, </span><span class="s4">7</span><span class="s1">); 
+                lblHeaderCell.setBackgroundResource(R.drawable.header); 
+                lblHeaderCell.setLayoutParams(headerParams); 
+                tableRow.addView(lblHeaderCell); 
+            } 
+            reportTable.addView(tableRow); 
+            </span><span class="s3">// For Content Addition</span><span class="s1"> 
+            ArrayList&lt;ArrayList&lt;String&gt;&gt; singleReportTable = </span><span class="s0">new </span><span class="s1">ArrayList&lt;ArrayList&lt;String&gt;&gt;(); 
+            singleReportTable = singleBalanceSheet.getTable(); 
+            </span><span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">jRow = </span><span class="s4">0</span><span class="s1">; jRow &lt; singleReportTable.size() - </span><span class="s4">1</span><span class="s1">; jRow++) { 
+                row = (ArrayList&lt;String&gt;) singleReportTable.get(jRow); 
+                TableRow singleRow = </span><span class="s0">new </span><span class="s1">TableRow(</span><span class="s0">this</span><span class="s1">); 
+                </span><span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i = </span><span class="s4">0</span><span class="s1">; i &lt; row.size(); i++) { 
+                    TextView lblCell = </span><span class="s0">new </span><span class="s1">TextView(</span><span class="s0">this</span><span class="s1">); 
+                    lblCell.setText(row.get(i)); 
+                    lblCell.setPadding(</span><span class="s4">7</span><span class="s1">, </span><span class="s4">7</span><span class="s1">, </span><span class="s4">7</span><span class="s1">, </span><span class="s4">7</span><span class="s1">); 
+                    lblCell.setBackgroundResource(R.drawable.cell); 
+                    singleRow.addView(lblCell); 
+                } 
+                reportTable.addView(singleRow); 
+            } 
+            row = (ArrayList&lt;String&gt;) singleReportTable.get(singleReportTable 
+                    .size() - </span><span class="s4">1</span><span class="s1">); 
+            TableRow singleRow = </span><span class="s0">new </span><span class="s1">TableRow(</span><span class="s0">this</span><span class="s1">); 
+            </span><span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i = </span><span class="s4">0</span><span class="s1">; i &lt; row.size(); i++) { 
+                TextView lblFooterCell = </span><span class="s0">new </span><span class="s1">TextView(</span><span class="s0">this</span><span class="s1">); 
+                lblFooterCell.setText(row.get(i)); 
+                lblFooterCell.setTextColor(Color.WHITE); 
+                lblFooterCell.setTypeface(</span><span class="s0">null</span><span class="s1">, Typeface.BOLD); 
+                lblFooterCell.setPadding(</span><span class="s4">7</span><span class="s1">, </span><span class="s4">7</span><span class="s1">, </span><span class="s4">7</span><span class="s1">, </span><span class="s4">7</span><span class="s1">); 
+                lblFooterCell.setBackgroundResource(R.drawable.header); 
+                singleRow.addView(lblFooterCell); 
+            } 
+            reportTable.addView(singleRow); 
+            </span><span class="s3">// //////////////</span><span class="s1"> 
+        } 
+ 
+        </span><span class="s3">// Toast.makeText(this, String.valueOf(tableReportList.size()),</span><span class="s1"> 
+        </span><span class="s3">// Toast.LENGTH_SHORT).show();</span><span class="s1"> 
+ 
+        </span><span class="s0">return </span><span class="s1">reportView; 
+    }<hr> 
+ 
+    </span><span class="s0">private </span><span class="s1">View tuitionPeriodReport(String reportTitle) { 
+        </span><span class="s3">// TODO Auto-generated method stub</span><span class="s1"> 
+</span><span class="s3">//      this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);</span><span class="s1"> 
+        View reportView = LayoutInflater.from(</span><span class="s0">this</span><span class="s1">).inflate( 
+                R.layout.activity_report_generator, </span><span class="s0">null</span><span class="s1">); 
+ 
+        LinearLayout layoutReportHeader = (LinearLayout) reportView 
+                .findViewById(R.id.layout_header_section); 
+        TableLayout reportTable = (TableLayout) reportView 
+                .findViewById(R.id.table_report); 
+ 
+        LinearLayout.LayoutParams fullWidthParams = </span><span class="s0">new </span><span class="s1">LinearLayout.LayoutParams( 
+                LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT); 
+        </span><span class="s3">// fullWidthParams.setMargins(5, 5, 5, 5);</span><span class="s1"> 
+ 
+        DatabaseHelper dbHelper = </span><span class="s0">new </span><span class="s1">DatabaseHelper(</span><span class="s0">this</span><span class="s1">); 
+ 
+        ContentValues reportDetails = dbHelper.getReportRecord(reportTitle); 
+ 
+        String customDateAsString = reportDetails 
+                .getAsString(DatabaseHelper.COLUMN_custom_time_check); 
+        Boolean customDate = (!customDateAsString.equals(</span><span class="s2">&quot;0&quot;</span><span class="s1">)); 
+        Log.v(</span><span class="s2">&quot;Query&quot;</span><span class="s1">, customDate.toString()); 
+ 
+        String dateFrom = </span><span class="s0">null</span><span class="s1">, dateTo = </span><span class="s0">null</span><span class="s1">; 
+        </span><span class="s0">if </span><span class="s1">(customDate) { 
+            dateFrom = reportDetails 
+                    .getAsString(DatabaseHelper.COLUMN_date_from); 
+            dateTo = reportDetails.getAsString(DatabaseHelper.COLUMN_date_to); 
+        } 
+ 
+        String tuitionName = reportDetails 
+                .getAsString(DatabaseHelper.COLUMN_tuition_name); 
+        TextView txtTutionNameHeader = </span><span class="s0">new </span><span class="s1">TextView(</span><span class="s0">this</span><span class="s1">); 
+        txtTutionNameHeader.setText(</span><span class="s2">&quot;Tuition : &quot; </span><span class="s1">+ tuitionName); 
+        txtTutionNameHeader.setTextColor(Color.WHITE); 
+        txtTutionNameHeader.setTextSize(</span><span class="s4">16</span><span class="s1">); 
+        txtTutionNameHeader.setPadding(</span><span class="s4">5</span><span class="s1">, </span><span class="s4">5</span><span class="s1">, </span><span class="s4">5</span><span class="s1">, </span><span class="s4">5</span><span class="s1">); 
+        txtTutionNameHeader.setBackgroundColor(Color.rgb(</span><span class="s4">20</span><span class="s1">, </span><span class="s4">58</span><span class="s1">, </span><span class="s4">58</span><span class="s1">)); 
+        txtTutionNameHeader.setLayoutParams(fullWidthParams); 
+        layoutReportHeader.addView(txtTutionNameHeader); 
+        </span><span class="s0">if </span><span class="s1">(dateFrom != </span><span class="s0">null </span><span class="s1">&amp;&amp; dateTo != </span><span class="s0">null</span><span class="s1">) { 
+            TextView txtPeriodHeader = </span><span class="s0">new </span><span class="s1">TextView(</span><span class="s0">this</span><span class="s1">); 
+            txtPeriodHeader.setText(</span><span class="s2">&quot;Period: &quot; </span><span class="s1">+ dateFrom + </span><span class="s2">&quot; to &quot; </span><span class="s1">+ dateTo); 
+            txtPeriodHeader.setTextColor(Color.WHITE); 
+            txtPeriodHeader.setTextSize(</span><span class="s4">16</span><span class="s1">); 
+            txtPeriodHeader.setPadding(</span><span class="s4">5</span><span class="s1">, </span><span class="s4">5</span><span class="s1">, </span><span class="s4">5</span><span class="s1">, </span><span class="s4">5</span><span class="s1">); 
+            txtPeriodHeader.setBackgroundColor(Color.rgb(</span><span class="s4">20</span><span class="s1">, </span><span class="s4">58</span><span class="s1">, </span><span class="s4">58</span><span class="s1">)); 
+            txtPeriodHeader.setLayoutParams(fullWidthParams); 
+            layoutReportHeader.addView(txtPeriodHeader); 
+        } 
+ 
+        ArrayList&lt;ArrayList&lt;String&gt;&gt; tableReportList = dbHelper 
+                .getReportDetails_TuitionType(tuitionName, dateFrom, dateTo); 
+        ArrayList&lt;String&gt; row = </span><span class="s0">new </span><span class="s1">ArrayList&lt;String&gt;(); 
+ 
+        </span><span class="s3">// For Header</span><span class="s1"> 
+        row = (ArrayList&lt;String&gt;) tableReportList.get(</span><span class="s4">0</span><span class="s1">); 
+        TableRow tableHeaderRow = </span><span class="s0">new </span><span class="s1">TableRow(</span><span class="s0">this</span><span class="s1">); 
+        TableRow.LayoutParams headerParams = </span><span class="s0">new </span><span class="s1">TableRow.LayoutParams( 
+                TableRow.LayoutParams.WRAP_CONTENT, 
+                TableRow.LayoutParams.MATCH_PARENT); 
+        </span><span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i = </span><span class="s4">0</span><span class="s1">; i &lt; row.size(); i++) { 
+            TextView lblHeaderCell = </span><span class="s0">new </span><span class="s1">TextView(</span><span class="s0">this</span><span class="s1">); 
+            lblHeaderCell.setText(row.get(i)); 
+            lblHeaderCell.setGravity(Gravity.CENTER); 
+            </span><span class="s3">// lblHeaderCell.setBackgroundColor(Color.rgb(20, 58, 58));</span><span class="s1"> 
+            lblHeaderCell.setTextColor(Color.WHITE); 
+            lblHeaderCell.setTypeface(</span><span class="s0">null</span><span class="s1">, Typeface.BOLD); 
+            lblHeaderCell.setPadding(</span><span class="s4">7</span><span class="s1">, </span><span class="s4">7</span><span class="s1">, </span><span class="s4">7</span><span class="s1">, </span><span class="s4">7</span><span class="s1">); 
+            lblHeaderCell.setEllipsize(TruncateAt.START); 
+            lblHeaderCell.setMaxLines(</span><span class="s4">2</span><span class="s1">); 
+            lblHeaderCell.setBackgroundResource(R.drawable.header); 
+            lblHeaderCell.setLayoutParams(headerParams); 
+            tableHeaderRow.addView(lblHeaderCell); 
+        } 
+        reportTable.addView(tableHeaderRow); 
+ 
+        </span><span class="s3">// For Content</span><span class="s1"> 
+        </span><span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">j = </span><span class="s4">1</span><span class="s1">; j &lt; tableReportList.size() - </span><span class="s4">1</span><span class="s1">; j++) { 
+            row = (ArrayList&lt;String&gt;) tableReportList.get(j); 
+            TableRow tableRow = </span><span class="s0">new </span><span class="s1">TableRow(</span><span class="s0">this</span><span class="s1">); 
+            </span><span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i = </span><span class="s4">0</span><span class="s1">; i &lt; row.size(); i++) { 
+                TextView lblCell = </span><span class="s0">new </span><span class="s1">TextView(</span><span class="s0">this</span><span class="s1">); 
+                lblCell.setText(row.get(i)); 
+                lblCell.setPadding(</span><span class="s4">7</span><span class="s1">, </span><span class="s4">7</span><span class="s1">, </span><span class="s4">7</span><span class="s1">, </span><span class="s4">7</span><span class="s1">); 
+                lblCell.setBackgroundResource(R.drawable.cell); 
+                tableRow.addView(lblCell); 
+            } 
+            reportTable.addView(tableRow); 
+        } 
+ 
+        </span><span class="s3">// For Footer Total</span><span class="s1"> 
+        row = (ArrayList&lt;String&gt;) tableReportList 
+                .get(tableReportList.size() - </span><span class="s4">1</span><span class="s1">); 
+        TableRow tableFooterRow = </span><span class="s0">new </span><span class="s1">TableRow(</span><span class="s0">this</span><span class="s1">); 
+        </span><span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i = </span><span class="s4">0</span><span class="s1">; i &lt; row.size(); i++) { 
+            TextView lblFooterCell = </span><span class="s0">new </span><span class="s1">TextView(</span><span class="s0">this</span><span class="s1">); 
+            lblFooterCell.setText(row.get(i)); 
+            lblFooterCell.setTextColor(Color.WHITE); 
+            lblFooterCell.setTypeface(</span><span class="s0">null</span><span class="s1">, Typeface.BOLD); 
+            lblFooterCell.setPadding(</span><span class="s4">7</span><span class="s1">, </span><span class="s4">7</span><span class="s1">, </span><span class="s4">7</span><span class="s1">, </span><span class="s4">7</span><span class="s1">); 
+            lblFooterCell.setBackgroundResource(R.drawable.header); 
+            tableFooterRow.addView(lblFooterCell); 
+        } 
+        reportTable.addView(tableFooterRow); 
+ 
+        </span><span class="s3">// Toast.makeText(this, String.valueOf(tableReport.length),</span><span class="s1"> 
+        </span><span class="s3">// Toast.LENGTH_SHORT).show();</span><span class="s1"> 
+ 
+        </span><span class="s0">return </span><span class="s1">reportView; 
+    }<hr> 
+ 
+    </span><span class="s3">/** 
+     * Set up the {</span><span class="s5">@link </span><span class="s3">android.app.ActionBar}. 
+     */</span><span class="s1"> 
+    </span><span class="s0">private void </span><span class="s1">setupActionBar() { 
+ 
+        getActionBar().setDisplayHomeAsUpEnabled(</span><span class="s0">true</span><span class="s1">); 
+ 
+    }<hr> 
+ 
+    @Override 
+    </span><span class="s0">public boolean </span><span class="s1">onCreateOptionsMenu(Menu menu) { 
+        </span><span class="s3">// Inflate the menu; this adds items to the action bar if it is present.</span><span class="s1"> 
+        getMenuInflater().inflate(R.menu.report_generator, menu); 
+        </span><span class="s0">return true</span><span class="s1">; 
+    }<hr> 
+ 
+    @Override 
+    </span><span class="s0">public boolean </span><span class="s1">onOptionsItemSelected(MenuItem item) { 
+        </span><span class="s0">switch </span><span class="s1">(item.getItemId()) { 
+        </span><span class="s0">case </span><span class="s1">android.R.id.home: 
+            </span><span class="s3">// This ID represents the Home or Up button. In the case of this</span><span class="s1"> 
+            </span><span class="s3">// activity, the Up button is shown. Use NavUtils to allow users</span><span class="s1"> 
+            </span><span class="s3">// to navigate up one level in the application structure. For</span><span class="s1"> 
+            </span><span class="s3">// more details, see the Navigation pattern on Android Design:</span><span class="s1"> 
+            </span><span class="s3">//</span><span class="s1"> 
+            </span><span class="s3">// http://developer.android.com/design/patterns/navigation.html#up-vs-back</span><span class="s1"> 
+            </span><span class="s3">//</span><span class="s1"> 
+            NavUtils.navigateUpFromSameTask(</span><span class="s0">this</span><span class="s1">); 
+            </span><span class="s0">return true</span><span class="s1">; 
+        } 
+        </span><span class="s0">return super</span><span class="s1">.onOptionsItemSelected(item); 
+    } 
+ 
+} 
+</span></pre>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="0dp"
+    android:background="@drawable/item"
+    android:padding="0dp">
+
+
+    <FrameLayout
+        android:id="@+id/tuitionHeaderFrame"
+        android:layout_width="fill_parent"
+        android:layout_height="120dp"
+        android:background="#ff11638d"
+        android:paddingLeft="30dp"
+        android:paddingTop="26dp">
+
+        <TextView
+            android:id="@+id/lblTuitionName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@android:color/white" />
+    </FrameLayout>
+
+    <com.shamanland.fab.FloatingActionButton
+        android:id="@+id/btnEditTuition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tuitionHeaderFrame"
+        android:layout_marginLeft="28dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="-35dp"
+        android:src="@drawable/edit"
+        app:floatingActionButtonColor="#ffbc446f"
+        app:floatingActionButtonImplicitElevation="false"
+        app:floatingActionButtonSize="normal" />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnEditTuition">
+
+        <LinearLayout
+            android:id="@+id/layoutTuitionDetailsSection"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            android:paddingLeft="28dp"
+            android:paddingTop="10dp">
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
