@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="11"
+        android:minSdkVersion="14"
         android:targetSdkVersion="17" />
 
     <android:uses-permission
@@ -15,6 +15,11 @@
     <android:uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="18" />
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
 
     <application
         android:allowBackup="true"
@@ -93,6 +98,41 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.spj.tuitionmanager.TuitionList" />
+        </activity>
+        <activity
+            android:name="com.spj.tuitionmanager.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName="com.spj.tuitionmanager.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.spj.tuitionmanager.MainActivity" />
+        </activity>
+
+        <service
+            android:name="com.spj.tuitionmanager.NotificationService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
+
+        <receiver
+            android:name="com.spj.tuitionmanager.BootReceiver"
+            android:enabled="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name="com.spj.tuitionmanager.EventList"
+            android:label="@string/title_activity_event_list"
+            android:parentActivityName="com.spj.tuitionmanager.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.spj.tuitionmanager.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.spj.tuitionmanager.EventDetails"
+            android:label="@string/title_activity_event_details" >
         </activity>
     </application>
 

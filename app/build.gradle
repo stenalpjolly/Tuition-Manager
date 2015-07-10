@@ -6,21 +6,22 @@ android {
 
     defaultConfig {
         applicationId "com.spj.tuitionmanager"
-        minSdkVersion 11
+        minSdkVersion 14
         targetSdkVersion 17
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:18.0.0'
+    compile 'com.android.support:support-v4:21.0.3'
     compile 'com.android.support:gridlayout-v7:18.0.0'
     compile files('libs/sqliteassethelper-2.0.1.jar')
+    compile files('libs/jxl.jar')
     compile 'com.shamanland:fab:0.0.7'
 }

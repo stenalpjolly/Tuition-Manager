@@ -35,16 +35,16 @@ public final class R {
 		public static final int com_shamanland_fab_shadow = 0x7f02000b;
 	}
 	public static final class id {
-		public static final int mini = 0x7f0a0000;
-		public static final int normal = 0x7f0a0001;
+		public static final int mini = 0x7f0b0000;
+		public static final int normal = 0x7f0b0001;
 	}
 	public static final class style {
-		public static final int FloatingActionButton = 0x7f080002;
-		public static final int FloatingActionButton_Dark = 0x7f080003;
-		public static final int FloatingActionButton_Dark_Mini = 0x7f080004;
-		public static final int FloatingActionButton_Light = 0x7f080005;
-		public static final int FloatingActionButton_Light_Mini = 0x7f080006;
-		public static final int FloatingActionButton_Mini = 0x7f080007;
+		public static final int FloatingActionButton = 0x7f070002;
+		public static final int FloatingActionButton_Dark = 0x7f070003;
+		public static final int FloatingActionButton_Dark_Mini = 0x7f070004;
+		public static final int FloatingActionButton_Light = 0x7f070005;
+		public static final int FloatingActionButton_Light_Mini = 0x7f070006;
+		public static final int FloatingActionButton_Mini = 0x7f070007;
 	}
 	public static final class styleable {
 		public static final int[] FloatingActionButton = { 0x7f010001, 0x7f010002, 0x7f010003 };
